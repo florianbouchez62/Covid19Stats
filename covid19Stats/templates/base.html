@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <meta charset="utf-8" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+        <link rel="stylesheet" href="{% static "css/layouts.css" %}">
+        {% block css%}{% endblock %}
+        <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous">
+        </script>
+    </head>
+
+    
+    <body>
+        <nav class="navbar shadow">
+            <div class="container">
+                <div class="navbar-menu">
+                    <div class="navbar-start bottomNav ">
+                        {% if request.path == "/dashboard/" %}
+                            <a class="navbar-item is-active" href="/dashboard/">
+                        {% else %}
+                            <a class="navbar-item" href="/dashboard/">
+                        {% endif %}
+                            <i class="fa fa-tachometer-alt"></i>&nbsp; Dashboard</a>
+                        {% if request.path == "/map/" %}
+                            <a class="navbar-item is-active" href="/map/">
+                        {% else %}
+                            <a class="navbar-item" href="/map/">
+                        {% endif %}
+                            <i class="fas fa-map"></i>&nbsp; World map</a>
+                    </div>
+                    <div class="navbar-end">
+                        <a class="navbar-item" href="/map/">
+                            <i class="fa fa-sign-out"></i>&nbsp; Pas touche</a>
+                    </div>
+                </div>
+            </div>
+        </nav>      
+
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+        <script src="{% static "js/common.js" %}"></script>
+        {% block script%}{% endblock %}
+    </body>
+</html>
