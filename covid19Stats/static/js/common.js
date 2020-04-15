@@ -1,20 +1,18 @@
 values.splice(0, 0, ['Country', 'Total Cases', 'Total Deaths'])
+
+values.forEach(element => {
+  if (Object.values(countries).includes(element[0])) {
+    element[0] = Object.keys(countries)[Object.values(countries).indexOf(element[0])];
+  }
+});
+
 google.charts.load('current', {
     'packages':['geochart'],
     'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
   });
   google.charts.setOnLoadCallback(drawRegionsMap);
-
   function drawRegionsMap() {
-    var data = google.visualization.arrayToDataTable([
-      ['Country', 'Total Cases', 'Total Deaths'],
-      ['Germany', 200, 200],
-      ['United States', 300, 200],
-      ['Brazil', 400, 200],
-      ['Canada', 500, 200],
-      ['France', 600, 200],
-      ['RU', 700, 200]
-    ]);
+    var data = google.visualization.arrayToDataTable(values);
 
     var options = {
         backgroundColor: { fill:'transparent' },
