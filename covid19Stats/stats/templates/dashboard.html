@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="columns">
+            <div class="column is-12 main">
+                <span class="heading">Stats</span>
+                <section class="info-tiles">
+                    <div class="tile is-ancestor has-text-centered">
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                {% if total_cases %}
+                                    <p class="title">{{total_cases}}</p>
+                                {% else %}
+                                    <p class="title">No data</p>
+                                {% endif %}
+                                <p class="subtitle">Total Cases</p>
+                            </article>
+                        </div>
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                {% if total_deaths %}
+                                    <p class="title">{{total_deaths}}</p>
+                                {% else %}
+                                    <p class="title">No data</p>
+                                {% endif %}
+                                <p class="subtitle">Total Deaths</p>
+                            </article>
+                        </div>
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                {% if recovered_cases %}
+                                    <p class="title">{{recovered_cases}}</p>
+                                {% else %}
+                                    <p class="title">No data</p>
+                                {% endif %}
+                                <p class="subtitle">Total Recovered</p>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+                <div class="columns">
+                </div>
+            </div>
+        </div>
+        <br>
+        <span class="heading">Graphs</span>
+        <br>
+        <div class="columns">
+            <div class="column">
+                <div class="box">
+                    <canvas id="orderChart"></canvas>
+                    faut mettre un graphs
+                </div>
+            </div>
+            <div class="column">
+                <div class="box">
+                    <canvas id="ticketChart"></canvas>
+                    faut mettre un graphs
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
