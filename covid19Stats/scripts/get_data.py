@@ -52,14 +52,14 @@ def run():
         if row['country'] in countries:
             Stats.objects.create(
                 country = row['country'] if alt.get(row['country']) is None else alt.get(row['country']),
-                new_cases = row['cases']['new'],
+                new_cases = row['cases']['new'] if row['cases']['new'] is not None else 0,
                 active_cases = row['cases']['active'],
                 critical_cases = row['cases']['critical'],
                 recovered_cases = row['cases']['recovered'],
                 total_cases = row['cases']['total'],
-                new_deaths = row['deaths']['new'],
+                new_deaths = row['deaths']['new'] if row ['deaths']['new'] is not None else 0,
                 total_deaths = row['deaths']['total'],
-                total_tests = row['tests']['total'],
+                total_tests = row['tests']['total'] if row['tests']['total'] is not None else 0,
                 day = row['day'],
                 time = row['time']
         )
