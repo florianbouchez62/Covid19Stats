@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block css %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+{% endblock %}
+
 {% block content %}
 
     <div class="container">
@@ -50,16 +54,54 @@
         <div class="columns">
             <div class="column">
                 <div class="box">
-                    <canvas id="orderChart"></canvas>
-                    faut mettre un graphs
+                    <canvas id="pie-chart"></canvas>
+                </div>
+                <div class="box">
+                    <table class="table">
+                        <thead>
+                           <tr>
+                              <th>Country</th>
+                              <th>Cases</th>
+                              <th>Deaths</th>
+                              <th>Recovered</th>
+                              <th>Tests</th>
+                              <th>New</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                            {% for stat in all_stats %}
+                                <tr>
+                                    <td>{{ stat.country|default_if_none:"unknown" }}</td>
+                                    <td>{{ stat.total_cases|default_if_none:"unknown"}}</td>
+                                    <td>{{ stat.total_deaths|default_if_none:"unknown"}}</td>
+                                    <td>{{ stat.recovered_cases|default_if_none:"unknown"}}</td>
+                                    <td>{{ stat.total_tests|default_if_none:"unknown"}}</td>
+                                    <td>{{ stat.new_cases|default_if_none:"unknown"}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                     </table>
                 </div>
             </div>
             <div class="column">
                 <div class="box">
-                    <canvas id="ticketChart"></canvas>
-                    faut mettre un graphs
+                    <canvas id="radar-chart" height="420"></canvas>
                 </div>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block script %}
+    {% load static %}
+    <script type="text/javascript">
+        let total_cases = "{{ total_cases.total_cases__sum }}"
+        let top_countries = "{{ top_countries }}";
+        let top_total_cases = "{{ top_total_cases }}";
+        let continents_name = "{{ continents_name }}";
+        let continents_total_cases = "{{ continents_total_cases }}";
+        let continents_total_deaths = "{{ continents_total_deaths }}";
+        let continents_total_recovered = "{{ continents_total_recovered }}";
+    </script>
+    <script src="{% static "js/graphs.js" %}"></script>
 {% endblock %}
