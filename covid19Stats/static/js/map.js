@@ -9,6 +9,7 @@ values.forEach(element => {
   }
 });
 
+// laod map Geocharts
 google.charts.load('current', {
     'packages':['geochart'],
     'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'

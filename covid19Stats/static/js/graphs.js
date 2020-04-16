@@ -1,21 +1,11 @@
-top_countries = top_countries.split('&quot;').join('"');
-top_countries = JSON.parse(top_countries)
+t = [top_countries, top_total_cases, continents_name, continents_total_cases, continents_total_deaths, continents_total_recovered]
 
-top_total_cases = top_total_cases.split('&quot;').join('"');
-top_total_cases = JSON.parse(top_total_cases)
+t.forEach(element => {
+  element = element.split('&quot;').join('"');
+  element = JSON.parse(element);
+});
 
-continents_name = continents_name.split('&quot;').join('"');
-continents_name = JSON.parse(continents_name)
-
-continents_total_cases = continents_total_cases.split('&quot;').join('"');
-continents_total_cases = JSON.parse(continents_total_cases)
-
-continents_total_deaths = continents_total_deaths.split('&quot;').join('"');
-continents_total_deaths = JSON.parse(continents_total_deaths)
-
-continents_total_recovered = continents_total_recovered.split('&quot;').join('"');
-continents_total_recovered = JSON.parse(continents_total_recovered)
-
+// new instance pie chart
 new Chart(document.getElementById("pie-chart"), {
     type: 'pie',
     data: {
@@ -35,6 +25,7 @@ new Chart(document.getElementById("pie-chart"), {
 });
 
 
+// new instance radar chart
 new Chart(document.getElementById("radar-chart"), {
     type: 'radar',
     data: {
