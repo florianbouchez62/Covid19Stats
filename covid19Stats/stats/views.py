@@ -34,7 +34,7 @@ class MapView(ListView):
         all_stats_object = Stats.objects.get(country='France')
         context['all_objects'] = json.dumps([
             [obj.country, obj.total_cases, obj.total_deaths] for obj in Stats.objects.all()])
-        time = datetime.strptime(all_stats_object[:1].get().time, "%Y-%m-%dT%H:%M:%S%z")
+        time = datetime.strptime(all_stats_object[:1].get().time, "%Y-%m-%dT%H:%M:%S%z")git
 
         context['time'] = time.strftime("%Y/%m/%d %H:%M:%S")
         return context
