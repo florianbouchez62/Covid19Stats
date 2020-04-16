@@ -11,7 +11,7 @@
                         <div class="tile is-parent">
                             <article class="tile is-child box">
                                 {% if total_cases %}
-                                    <p class="title">{{total_cases}}</p>
+                                    <p class="title">{{total_cases.total_cases__sum}}</p>
                                 {% else %}
                                     <p class="title">No data</p>
                                 {% endif %}
@@ -21,7 +21,7 @@
                         <div class="tile is-parent">
                             <article class="tile is-child box">
                                 {% if total_deaths %}
-                                    <p class="title">{{total_deaths}}</p>
+                                    <p class="title">{{total_deaths.total_deaths__sum}}</p>
                                 {% else %}
                                     <p class="title">No data</p>
                                 {% endif %}
@@ -31,7 +31,7 @@
                         <div class="tile is-parent">
                             <article class="tile is-child box">
                                 {% if recovered_cases %}
-                                    <p class="title">{{recovered_cases}}</p>
+                                    <p class="title">{{recovered_cases.recovered_cases__sum}}</p>
                                 {% else %}
                                     <p class="title">No data</p>
                                 {% endif %}

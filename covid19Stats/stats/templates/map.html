@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block script %}
+    {% load static %}
+    <script src="{% static "js/equivalent_countries.js" %}"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         let values = "{{ all_objects }}";
