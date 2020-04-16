@@ -6,6 +6,8 @@
 
 {% block content %}
 
+    {% load mathfilters %}
+
     <div class="container">
         <div class="columns">
             <div class="column is-12 main">
@@ -60,23 +62,23 @@
                     <table class="table">
                         <thead>
                            <tr>
-                              <th>Country</th>
-                              <th>Cases</th>
-                              <th>Deaths</th>
-                              <th>Recovered</th>
-                              <th>Tests</th>
-                              <th>New</th>
+                                <th>Country</th>
+                                <th>Cases</th>
+                                <th>Deaths</th>
+                                <th>Recovered</th>
+                                <th>Mortality rate</th>
+                                <th>Cure rate</th>
                            </tr>
                         </thead>
                         <tbody>
                             {% for stat in all_stats %}
                                 <tr>
-                                    <td>{{ stat.country|default_if_none:"unknown" }}</td>
-                                    <td>{{ stat.total_cases|default_if_none:"unknown"}}</td>
-                                    <td>{{ stat.total_deaths|default_if_none:"unknown"}}</td>
-                                    <td>{{ stat.recovered_cases|default_if_none:"unknown"}}</td>
-                                    <td>{{ stat.total_tests|default_if_none:"unknown"}}</td>
-                                    <td>{{ stat.new_cases|default_if_none:"unknown"}}</td>
+                                    <td>{{ stat.country }}</td>
+                                    <td>{{ stat.total_cases }}</td>
+                                    <td>{{ stat.total_deaths }}</td>
+                                    <td>{{ stat.recovered_cases }}</td>
+                                    <td>{{ stat.total_deaths|div:stat.total_cases|mul:100|floatformat:-2 }}%</td>
+                                    <td>{{ stat.recovered_cases|div:stat.total_cases|mul:100|floatformat:-2 }}%</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
