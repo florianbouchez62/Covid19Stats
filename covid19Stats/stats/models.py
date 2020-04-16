@@ -13,3 +13,4 @@ class Stats(models.Model):
     total_tests = models.IntegerField("total_tests", null=True)
     day = models.TextField("day")
     time = models.TextField("time")
+    type_stat = models.TextField("type_stat")
