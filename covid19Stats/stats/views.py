@@ -7,6 +7,9 @@ import json
 
 
 class DashboardView(ListView):
+    """
+        Class for dashboard view with context.
+    """
     model = Stats
     template_name = 'dashboard.html'
 
@@ -29,12 +32,12 @@ class DashboardView(ListView):
         context['continents_total_deaths'] = json.dumps([continent.total_deaths for continent in distribution_continents])
         context['continents_total_recovered'] = json.dumps([continent.recovered_cases for continent in distribution_continents])
 
-        for i in all_stats_object:
-            print(i)
-
         return context
     
 class MapView(ListView):
+    """
+        Class for Map view with context.
+    """
     model = Stats
     template_name = 'map.html'
 

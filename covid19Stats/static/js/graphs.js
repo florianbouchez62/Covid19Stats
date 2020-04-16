@@ -16,6 +16,8 @@ continents_total_deaths = JSON.parse(continents_total_deaths)
 continents_total_recovered = continents_total_recovered.split('&quot;').join('"');
 continents_total_recovered = JSON.parse(continents_total_recovered)
 
+
+// new instance pie chart
 new Chart(document.getElementById("pie-chart"), {
     type: 'pie',
     data: {
@@ -35,6 +37,7 @@ new Chart(document.getElementById("pie-chart"), {
 });
 
 
+// new instance radar chart
 new Chart(document.getElementById("radar-chart"), {
     type: 'radar',
     data: {
